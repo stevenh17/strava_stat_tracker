@@ -1,12 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-interface Run {
-  id: string;
-  name: string;
-  distance: number;
-}
+import { Run } from "@/lib/types";
 
 interface UserCardProps {
   name: string;

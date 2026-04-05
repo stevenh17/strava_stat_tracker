@@ -3,14 +3,7 @@
 import { useState, useMemo } from "react";
 import RunChart from "./RunChart";
 import UserCard from "./UserCard";
-
-interface Run {
-  id: string;
-  firstName: string;
-  name: string;
-  distance: number;
-  start_date: string;
-}
+import { Run } from "@/lib/types";
 
 export default function RunDashboard({ runs }: { runs: Run[] }) {
   const [from, setFrom] = useState("");
