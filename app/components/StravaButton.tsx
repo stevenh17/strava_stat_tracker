@@ -1,31 +1,18 @@
 "use client";
 
+import Image from "next/image";
+
 export default function StravaButton() {
   return (
     <a href="/api/auth/login">
-      <button
-        style={{
-          backgroundColor: "#FC4C02",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px",
-          padding: "10px 20px",
-          fontSize: "15px",
-          fontWeight: 600,
-          cursor: "pointer",
-          transition: "background-color 0.2s ease",
-        }}
-        onMouseOver={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-            "#e04400";
-        }}
-        onMouseOut={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.backgroundColor =
-            "#FC4C02";
-        }}
-      >
-        Connect with Strava
-      </button>
+      <Image
+        src="/btn_strava_connect_with_orange.svg"
+        alt="Connect with Strava"
+        width={193}
+        height={48}
+        loading="eager"
+        style={{ cursor: "pointer", width: "auto", height: "48px" }}
+      />
     </a>
   );
 }
