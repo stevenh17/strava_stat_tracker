@@ -1,3 +1,5 @@
+import prisma from "@/lib/prisma";
+
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const code = searchParams.get("code");
@@ -21,6 +23,31 @@ export async function GET(req: Request) {
   });
 
   const data = await res.json();
+
+  // Extract user info
+  const athlete = data.athlete;
+
+  // Upsert (insert or update) in Postgres
+  await prisma.stravaUser.upsert({
+    where: { id: athlete.id },
+    update: {
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresAt: data.expires_at,
+      firstName: athlete.firstname,
+      lastName: athlete.lastname,
+      profile: athlete.profile,
+    },
+    create: {
+      id: athlete.id,
+      accessToken: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresAt: data.expires_at,
+      firstName: athlete.firstname,
+      lastName: athlete.lastname,
+      profile: athlete.profile,
+    },
+  });
 
   console.log("Strava response:", data);
 

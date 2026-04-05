@@ -1,20 +1,18 @@
-import prisma from "@/lib/prisma";
+import StravaButton from "./components/StravaButton";
+import RunDashboard from "./components/RunDashboard";
 
 export default async function Page() {
-  const users = await prisma.user.findMany();
+  const res = await fetch("http://localhost:3000/api/activities", {
+    next: { revalidate: 3600 },
+  });
+
+  const runs = await res.json();
+
   return (
     <main>
-      <a href="/api/auth/login">
-        <button>Connect with Strava</button>
-      </a>
-
-      <ol>
-        {users.map((user) => (
-          <li key={user.id} className="mb-2">
-            {user.name}
-          </li>
-        ))}
-      </ol>
+      <StravaButton />
+      <h1>Runs</h1>
+      <RunDashboard runs={runs} />
     </main>
   );
 }

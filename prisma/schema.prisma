@@ -11,3 +11,15 @@ model User {
   id   String @id @default(cuid())
   name String
 }
+
+model StravaUser {
+  id           Int      @id @map("athlete_id") // rename as athlete_id in database
+  firstName    String?
+  lastName     String?
+  profile      String?
+  accessToken  String
+  refreshToken String
+  expiresAt    Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
