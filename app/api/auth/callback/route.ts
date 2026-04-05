@@ -51,5 +51,5 @@ export async function GET(req: Request) {
 
   console.log("Strava response:", data);
 
-  return Response.redirect("http://localhost:3000");
+  return Response.redirect(`${process.env.NEXT_PUBLIC_APP_URL}`);
 }
