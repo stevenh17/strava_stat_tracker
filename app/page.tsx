@@ -1,5 +1,6 @@
 import StravaButton from "./components/StravaButton";
 import RunDashboard from "./components/RunDashboard";
+import RefreshButton from "./components/RefreshButton";
 import prisma from "@/lib/prisma";
 import { getValidAccessToken } from "@/lib/strava";
 import { StravaActivity, EnrichedRun } from "@/lib/types";
@@ -39,6 +40,7 @@ export default async function Page() {
   return (
     <main>
       <StravaButton />
+      <RefreshButton />
       <h1>Runs</h1>
       <RunDashboard runs={allRuns} />
     </main>
