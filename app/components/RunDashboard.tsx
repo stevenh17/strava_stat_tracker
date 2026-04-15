@@ -6,7 +6,7 @@ import UserCard from "./UserCard";
 import { Run } from "@/lib/types";
 
 export default function RunDashboard({ runs }: { runs: Run[] }) {
-  const [from, setFrom] = useState("");
+  const [from, setFrom] = useState("2025-03-15");
   const [to, setTo] = useState("");
 
   const filtered = useMemo(() => {
